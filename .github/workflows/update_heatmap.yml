@@ -25,7 +25,7 @@ jobs:
       # 3. Install required packages
       - name: Install packages
         run: |
-          pip install requests pandas numpy beautifulsoup4 lxml weasyprint
+          pip install requests pandas numpy beautifulsoup4 lxml weasyprint reportlab
 
       # 4. Run your script
       - name: Generate heatmap
