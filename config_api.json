@@ -1,0 +1,10 @@
+[
+{
+    "user": "rdkcentral",
+    "repo": "middleware-player-interface",
+    "workflow": "L1",
+    "test_level": "L1",
+    "enabled": true,
+    "token_env": "RDKCENTRAL_TOKEN"
+  }
+]

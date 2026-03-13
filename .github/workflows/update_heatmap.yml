@@ -1,0 +1,59 @@
+name: Update Execution Grid
+
+# When to run this automation
+on:
+  schedule:
+    - cron: '0 6 * * *'  # Every day at 6 AM UTC
+  workflow_dispatch:      # Allow manual run from GitHub website
+
+# What to do
+jobs:
+  update-grid:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 1. Download your code from GitHub
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Install Python
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # 3. Install required packages
+      - name: Install packages
+        run: |
+          pip install requests pandas numpy beautifulsoup4 lxml weasyprint
+
+      # 4. Run your script
+      - name: Generate heatmap
+        env:
+          RDKCENTRAL_TOKEN: ${{ secrets.RDKCENTRAL_TOKEN }}
+        run: |
+          python latest_heatmap.py
+
+      # 5. Copy HTML to docs folder (for website)
+      - name: Copy to docs
+        run: |
+          mkdir -p docs
+          cp execution_grid_final.html docs/index.html
+          cp execution_grid_final.pdf docs/execution_grid.pdf
+          cp coverage_history_api.csv docs/coverage_history.csv
+
+      # 6. Save changes back to GitHub
+      - name: Commit changes
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add docs/
+          git diff --staged --quiet || git commit -m "Update heatmap $(date)"
+          git push
+
+      # 7. Publish to website
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
