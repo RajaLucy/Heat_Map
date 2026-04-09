@@ -6,7 +6,6 @@ date,label,lines_pct,functions_pct,build_status,build_conclusion,build_success,b
 2026-03-04,rdkcentral/middleware-player-interface [L1],-1.0,-1.0,completed,success,1.0,378.0,454.0,453.0,0.0,0.0,1.0
 2026-03-11,rdkcentral/middleware-player-interface [L1],-1.0,-1.0,completed,success,1.0,392.0,454.0,453.0,0.0,0.0,1.0
 2026-03-12,rdkcentral/middleware-player-interface [L1],-1.0,-1.0,completed,success,1.0,385.0,454.0,453.0,0.0,0.0,1.0
-2026-04-06,rdkcentral/middleware-player-interface [L1],50.4,67.5,completed,success,1.0,469.0,1934.0,1536.0,0.0,0.0,398.0
 2026-04-07,rdkcentral/middleware-player-interface [L1],50.4,67.5,completed,success,1.0,474.0,1934.0,1536.0,0.0,0.0,398.0
 2026-01-05,rdkcentral/rdkservices [L1],57.0,61.5,completed,success,1.0,1473.0,,,,,
 2026-01-09,rdkcentral/rdkservices [L1],56.9,61.5,completed,success,1.0,1448.0,,,,,
